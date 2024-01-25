@@ -9,6 +9,7 @@ import flixel.FlxState
 //import flixel.*; removido por falta de necessidade lol
 //goodEnding does't exist
 //add melhor em funcao unica, var melhor se for usar mais coisas
+//FlxTimer lol
 
 /**
  * ...
@@ -26,20 +27,12 @@ class CantRunState extends FlxState
 		
 		FlxG.camera.fade(FlxColor.BLACK, 0.8, true);
 	
-		new FlxTimer().start(24, endIt);
+		new FlxTimer().start(24, function(e:FlxTimer)
+		{
+
+		        trace("ENDING");
 		
+		        FlxG.switchState(new PlayState());
+		});
 	}
-	
-	override public function update(elapsed:Float):Void 
-	{
-		super.update(elapsed);
-		
-	}
-	
-	
-	public function endIt(e:FlxTimer=null){
-		trace("ENDING");
-		FlxG.switchState(new PlayState());
-	}
-	
 }
